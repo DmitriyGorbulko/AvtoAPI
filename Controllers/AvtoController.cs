@@ -26,10 +26,28 @@ namespace AvtoAPI.Controllers
             return Ok(await _avtoService.GetAvtoById(id));
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create[FromQuery] Avto avto)
+        [HttpGet]
+        public async Task<IActionResult> GetAvtos()
         {
-            return Ok( _avtoService.)
+            return Ok(await _avtoService.GetAll());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromQuery] Avto avto)
+        {
+            return Ok(await _avtoService.Create(avto));
+        }
+
+        [HttpDelete]
+        public async Task Delete([FromQuery] int id)
+        {
+            return Ok(await _avtoService.DeleteAvto(id));
+        }
+
+        [HttpPut]
+        public async Task Update ([FromQuery] Avto avto)
+        {
+            return Ok(await _avtoService.UpdateAvto(avto));
         }
     }
 }

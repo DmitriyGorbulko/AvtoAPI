@@ -24,5 +24,29 @@ namespace AvtoAPI.Controllers
         {
             return Ok(await _carOwnerService.GetCarOwnerById(id));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCarOwners()
+        {
+            return Ok(await _carOwnerService.GetAll());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromQuery] CarOwner carOwner)
+        {
+            return Ok(await _carOwnerService.Create(carOwner));
+        }
+
+        [HttpDelete]
+        public async Task Delete([FromQuery] int id)
+        {
+            return Ok(await _carOwnerService.DeleteCarOwner(id));
+        }
+
+        [HttpPut]
+        public async Task Update([FromQuery] CarOwner carOwner)
+        {
+            return Ok(await _carOwnerService.UpdateCarOwner(carOwner));
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace AvtoAPI.Services
 
         public async Task<List<Avto>> GetAll()
         {
-            return await _avtoRepository.GetAll(<Avto>);
+            return await _avtoRepository.GetAll(avto);
         }
 
         public async Task<Avto> GetAvtoById(int id)

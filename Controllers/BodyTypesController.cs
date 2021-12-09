@@ -25,5 +25,29 @@ namespace AvtoAPI.Controllers
         {
             return Ok(await _bodyTypeService.GetBodyTypeById(id));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAvtos()
+        {
+            return Ok(await _bodyTypeService.GetAll());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromQuery] BodyType bodyType)
+        {
+            return Ok(await _bodyTypeService.Create(bodyType));
+        }
+
+        [HttpDelete]
+        public async Task Delete([FromQuery] int id)
+        {
+            Ok(await _bodyTypeService.DeleteBodyType(id));
+        }
+
+        [HttpPut]
+        public async Task Update([FromQuery] BodyType bodyType)
+        {
+            Ok(await _bodyTypeService.UpdateBodyType(bodyType));
+        }
     }
 }

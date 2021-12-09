@@ -24,7 +24,7 @@ namespace AvtoAPI.Services
 
         public async Task<List<Rudder>> GetAll()
         {
-            return await _rudderRepository.GetAll(new List<Rudder>);
+            return await _rudderRepository.GetAll();
         }
 
         public async Task<Rudder> GetRudderById(int id)

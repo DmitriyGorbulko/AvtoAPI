@@ -24,7 +24,7 @@ namespace AvtoAPI.Services
 
         public async Task<List<BodyType>> GetAll()
         {
-            return await _bodyTypeRepository.GetAll(new List<BodyType>);
+            return await _bodyTypeRepository.GetAll();
         }
 
         public async Task<BodyType> GetBodyTypeById(int id)

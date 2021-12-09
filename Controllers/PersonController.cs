@@ -24,5 +24,29 @@ namespace AvtoAPI.Controllers
         {
             return Ok(await _personService.GetPersonById(id));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetPeople()
+        {
+            return Ok(await _personService.GetAll());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromQuery] BodyType person)
+        {
+            return Ok(await _personService.Create(person));
+        }
+
+        [HttpDelete]
+        public async Task Delete([FromQuery] int id)
+        {
+            return Ok(await _personService.DeletePerson(id));
+        }
+
+        [HttpPut]
+        public async Task Update([FromQuery] Person person)
+        {
+            return Ok(await _personService.UpdatePerson(person));
+        }
     }
 }
