@@ -10,9 +10,9 @@ namespace AvtoAPI.Services.Abstracts
     public interface IBodyTypeService
     {
         Task<BodyType> GetBodyTypeById(int id);
-        Task<List<BodyType>> GetAll();
+        Task<IEnumerable<BodyType>> GetAll();
         Task<BodyType> Create(BodyType bodyType);
-        Task UpdateBodyType(BodyType bodyType);
+        Task<BodyType>UpdateBodyType(BodyType bodyType);
         Task DeleteBodyType(int id);
     }
 }

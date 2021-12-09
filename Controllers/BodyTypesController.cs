@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace AvtoAPI.Controllers
 {
+    [ApiController]
     public class BodyTypeController : ControllerBase
     {
         private readonly IBodyTypeService _bodyTypeService;
@@ -21,13 +22,13 @@ namespace AvtoAPI.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetAvto([FromQuery] int id)
+        public async Task<IActionResult> GetBodyType([FromQuery] int id)
         {
             return Ok(await _bodyTypeService.GetBodyTypeById(id));
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAvtos()
+        public async Task<IActionResult> GetBodyType()
         {
             return Ok(await _bodyTypeService.GetAll());
         }
@@ -41,7 +42,7 @@ namespace AvtoAPI.Controllers
         [HttpDelete]
         public async Task Delete([FromQuery] int id)
         {
-            Ok(await _bodyTypeService.DeleteBodyType(id));
+            await _bodyTypeService.DeleteBodyType(id);
         }
 
         [HttpPut]

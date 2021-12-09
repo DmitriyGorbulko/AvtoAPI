@@ -22,7 +22,7 @@ namespace AvtoAPI.Services
             await _rudderRepository.DeleteAsync(id);
         }
 
-        public async Task<List<Rudder>> GetAll()
+        public async Task<IEnumerable<Rudder>> GetAll()
         {
             return await _rudderRepository.GetAll();
         }
@@ -32,9 +32,9 @@ namespace AvtoAPI.Services
             return await _rudderRepository.GetAsync(id);
         }
 
-        public async Task UpdateRudder(Rudder rudder)
+        public async Task<Rudder> UpdateRudder(Rudder rudder)
         {
-            await _rudderRepository.UpdateAsync(rudder);
+            return await _rudderRepository.UpdateAsync(rudder);
         }
     }
 }

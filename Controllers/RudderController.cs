@@ -26,13 +26,13 @@ namespace AvtoAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetBodyTypes()
+        public async Task<IActionResult> GetRudders()
         {
             return Ok(await _rudderService.GetAll());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromQuery] BodyType rudder)
+        public async Task<IActionResult> Create([FromQuery] Rudder rudder)
         {
             return Ok(await _rudderService.Create(rudder));
         }
@@ -40,13 +40,13 @@ namespace AvtoAPI.Controllers
         [HttpDelete]
         public async Task Delete([FromQuery] int id)
         {
-            return Ok(await _rudderService.DeleteRudder(id));
+            await _rudderService.DeleteRudder(id);
         }
 
         [HttpPut]
-        public async Task Update([FromQuery] BodyType rudder)
+        public async Task Update([FromQuery] Rudder rudder)
         {
-            return Ok(await _rudderervice.Upda(rudder));
+            Ok(await _rudderService.UpdateRudder(rudder));
         }
     }
 }

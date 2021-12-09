@@ -11,5 +11,9 @@ namespace AvtoAPI.Repositories
     {
         public AvtoRepository(AvtoContext context): base(context)
         {}
+        public virtual async Task<Avto> GetByNumberAvto(string numberAvto)
+        {
+            return await _context.Set<Avto>().FindAsync(numberAvto);
+        }
     }
 }

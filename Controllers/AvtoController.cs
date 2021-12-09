@@ -27,6 +27,12 @@ namespace AvtoAPI.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetByNumberAvto([FromQuery] string numberAvto)
+        {
+            return Ok(await _avtoService.GetByNumberAvto(numberAvto));
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetAvtos()
         {
             return Ok(await _avtoService.GetAll());
@@ -41,13 +47,13 @@ namespace AvtoAPI.Controllers
         [HttpDelete]
         public async Task Delete([FromQuery] int id)
         {
-            return Ok(await _avtoService.DeleteAvto(id));
+            await _avtoService.DeleteAvto(id);
         }
 
         [HttpPut]
         public async Task Update ([FromQuery] Avto avto)
         {
-            return Ok(await _avtoService.UpdateAvto(avto));
+            Ok(await _avtoService.UpdateAvto(avto));
         }
     }
 }

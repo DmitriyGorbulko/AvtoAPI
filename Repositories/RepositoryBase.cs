@@ -40,10 +40,11 @@ namespace AvtoAPI.Repositories
             return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        public virtual async Task UpdateAsync(TEntity entity)
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+            return entity;
         }
     }
 }

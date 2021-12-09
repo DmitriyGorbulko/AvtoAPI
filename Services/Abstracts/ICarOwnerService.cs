@@ -10,9 +10,9 @@ namespace AvtoAPI.Services.Abstracts
     public interface ICarOwnerService
     {
         Task<CarOwner> GetCarOwnerById(int id);
-        Task<List<CarOwner>> GetAll();
+        Task<IEnumerable<CarOwner>> GetAll();
         Task<CarOwner> Create(CarOwner carOwner);
-        Task UpdateCarOwner(CarOwner carOwner);
+        Task<CarOwner> UpdateCarOwner(CarOwner carOwner);
         Task DeleteCarOwner(int id);
     }
 }

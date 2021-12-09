@@ -12,6 +12,7 @@ namespace AvtoAPI.Services
     public class BodyTypeService : IBodyTypeService
     {
         private readonly IBodyTypeRepository _bodyTypeRepository;
+
         public async Task<BodyType> Create(BodyType bodyType)
         {
             return await _bodyTypeRepository.Create(bodyType);
@@ -22,7 +23,7 @@ namespace AvtoAPI.Services
             await _bodyTypeRepository.GetAsync(id);
         }
 
-        public async Task<List<BodyType>> GetAll()
+        public async Task<IEnumerable<BodyType>> GetAll()
         {
             return await _bodyTypeRepository.GetAll();
         }
@@ -32,9 +33,10 @@ namespace AvtoAPI.Services
             return await _bodyTypeRepository.GetAsync(id);
         }
 
-        public async Task UpdateBodyType(BodyType bodyType)
+        public async Task <BodyType> UpdateBodyType(BodyType bodyType)
         {
-            await _bodyTypeRepository.UpdateAsync(bodyType);
+            return await _bodyTypeRepository.UpdateAsync(bodyType);
         }
+
     }
 }

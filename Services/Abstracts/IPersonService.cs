@@ -10,9 +10,9 @@ namespace AvtoAPI.Services.Abstracts
     public interface IPersonService
     {
         Task<Person> GetPersonById(int id);
-        Task<List<Person>> GetAll();
+        Task<IEnumerable<Person>> GetAll();
         Task<Person> Create(Person person);
-        Task UpdatePerson(Person person);
+        Task<Person> UpdatePerson(Person person);
         Task DeletePerson(int id);
     }
 }

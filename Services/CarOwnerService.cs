@@ -23,9 +23,9 @@ namespace AvtoAPI.Services
             await _carOwnerRepository.DeleteAsync(id);
         }
 
-        public async Task<List<CarOwner>> GetAll()
+        public async Task<IEnumerable<CarOwner>> GetAll()
         {
-            return await _carOwnerRepository.GetAll(new List<CarOwner>);
+            return await _carOwnerRepository.GetAll();
         }
 
         public async Task<CarOwner> GetCarOwnerById(int id)
@@ -33,9 +33,9 @@ namespace AvtoAPI.Services
             return await _carOwnerRepository.GetAsync(id);
         }
 
-        public async Task UpdateCarOwner(CarOwner carOwner)
+        public async Task<CarOwner>UpdateCarOwner(CarOwner carOwner)
         {
-            await _carOwnerRepository.UpdateAsync(carOwner);
+            return await _carOwnerRepository.UpdateAsync(carOwner);
         }
     }
 }

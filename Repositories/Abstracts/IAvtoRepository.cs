@@ -8,5 +8,6 @@ namespace AvtoAPI.Repositories
 {
     public interface IAvtoRepository : IRepositoryBase<Avto>
     {
+        Task<Avto> GetByNumberAvto(string numberAvto);
     }
 }

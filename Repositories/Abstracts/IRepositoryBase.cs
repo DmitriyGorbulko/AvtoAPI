@@ -10,7 +10,7 @@ namespace AvtoAPI.Repositories
         Task<IEnumerable<TEntity>> GetAll();
         Task<TEntity> GetAsync(int id);
         Task<TEntity> Create(TEntity entity);
-        Task UpdateAsync(TEntity entity);
+        Task<TEntity>UpdateAsync(TEntity entity);
         Task DeleteAsync(int id);
     }
 }

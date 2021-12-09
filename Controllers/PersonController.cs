@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace AvtoAPI.Controllers
 {
+    [ApiController]
     public class PersonController : ControllerBase
     {
         private readonly IPersonService _personService;
@@ -20,7 +21,7 @@ namespace AvtoAPI.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] int id)
+        public async Task<IActionResult> GetPerson([FromQuery] int id)
         {
             return Ok(await _personService.GetPersonById(id));
         }
@@ -32,7 +33,7 @@ namespace AvtoAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromQuery] BodyType person)
+        public async Task<IActionResult> Create([FromQuery] Person person)
         {
             return Ok(await _personService.Create(person));
         }
@@ -40,13 +41,13 @@ namespace AvtoAPI.Controllers
         [HttpDelete]
         public async Task Delete([FromQuery] int id)
         {
-            return Ok(await _personService.DeletePerson(id));
+            await _personService.DeletePerson(id);
         }
 
         [HttpPut]
         public async Task Update([FromQuery] Person person)
         {
-            return Ok(await _personService.UpdatePerson(person));
+            Ok(await _personService.UpdatePerson(person));
         }
     }
 }
