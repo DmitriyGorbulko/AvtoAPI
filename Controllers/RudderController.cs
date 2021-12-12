@@ -20,31 +20,36 @@ namespace AvtoAPI.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] int id)
+        [Route(nameof(GetRudder))]
+        public async Task<IActionResult> GetRudder([FromQuery] int id)
         {
             return Ok(await _rudderService.GetRudderById(id));
         }
 
         [HttpGet]
+        [Route(nameof(GetRudders))]
         public async Task<IActionResult> GetRudders()
         {
             return Ok(await _rudderService.GetAll());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromQuery] Rudder rudder)
+        [Route(nameof(CreateRudder))]
+        public async Task<IActionResult> CreateRudder([FromQuery] Rudder rudder)
         {
             return Ok(await _rudderService.Create(rudder));
         }
 
         [HttpDelete]
-        public async Task Delete([FromQuery] int id)
+        [Route(nameof(DeleteRudder))]
+        public async Task DeleteRudder([FromQuery] int id)
         {
             await _rudderService.DeleteRudder(id);
         }
 
         [HttpPut]
-        public async Task Update([FromQuery] Rudder rudder)
+        [Route(nameof(UpdateRudder))]
+        public async Task UpdateRudder([FromQuery] Rudder rudder)
         {
             Ok(await _rudderService.UpdateRudder(rudder));
         }

@@ -21,31 +21,36 @@ namespace AvtoAPI.Controllers
 
 
         [HttpGet]
+        [Route(nameof(GetPerson))]
         public async Task<IActionResult> GetPerson([FromQuery] int id)
         {
             return Ok(await _personService.GetPersonById(id));
         }
 
         [HttpGet]
+        [Route(nameof(GetPeople))]
         public async Task<IActionResult> GetPeople()
         {
             return Ok(await _personService.GetAll());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromQuery] Person person)
+        [Route(nameof(CreatePerson))]
+        public async Task<IActionResult> CreatePerson([FromQuery] Person person)
         {
             return Ok(await _personService.Create(person));
         }
 
         [HttpDelete]
-        public async Task Delete([FromQuery] int id)
+        [Route(nameof(DeletePerson))]
+        public async Task DeletePerson([FromQuery] int id)
         {
             await _personService.DeletePerson(id);
         }
 
         [HttpPut]
-        public async Task Update([FromQuery] Person person)
+        [Route(nameof(UpdatePerson))]
+        public async Task UpdatePerson([FromQuery] Person person)
         {
             Ok(await _personService.UpdatePerson(person));
         }
