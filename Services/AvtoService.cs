@@ -12,7 +12,6 @@ namespace AvtoAPI.Services
     public class AvtoService : IAvtoService
     {
         private readonly IAvtoRepository _avtoRepository;
-        private readonly AvtoContext _context;
 
         public async Task<Avto> Create(Avto avto)
         {
