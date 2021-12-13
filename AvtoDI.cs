@@ -15,7 +15,6 @@ namespace AvtoAPI
                 .AddScoped<IAvtoRepository, AvtoRepository>()
                 .AddScoped<IBodyTypeRepository, BodyTypeRepository>()
                 .AddScoped<ICarOwnerRepository, CarOwnerRepository>()
-                .AddScoped<IPersonRepository, PersonRepository>()
                 .AddScoped<IRudderRepository, RudderRepository>();
         }
     }

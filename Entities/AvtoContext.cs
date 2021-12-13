@@ -17,7 +17,6 @@ namespace AvtoAPI.Entities
         public DbSet<Avto> Avtos { get; set; }
         public DbSet<BodyType> BodyTypes { get; set; }
         public DbSet<CarOwner> CarOwners { get; set; }
-        public DbSet<Person> People { get; set; }
         public DbSet<Rudder> Rudders { get; set; }
       
     }
