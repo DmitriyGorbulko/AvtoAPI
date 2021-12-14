@@ -13,6 +13,11 @@ namespace AvtoAPI.Services
     {
         private readonly IBodyTypeRepository _bodyTypeRepository;
 
+        public BodyTypeService(IBodyTypeRepository bodyTypeRepository)
+        {
+            _bodyTypeRepository = bodyTypeRepository;
+        }
+
         public async Task<BodyType> Create(BodyType bodyType)
         {
             return await _bodyTypeRepository.Create(bodyType);
