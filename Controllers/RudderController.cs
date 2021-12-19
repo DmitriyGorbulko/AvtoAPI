@@ -21,6 +21,7 @@ namespace AvtoAPI.Controllers
 
         [HttpGet]
         [Route(nameof(GetRudder))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> GetRudder([FromQuery] int id)
         {
             return Ok(await _rudderService.GetRudderById(id));
@@ -28,6 +29,7 @@ namespace AvtoAPI.Controllers
 
         [HttpGet]
         [Route(nameof(GetRudders))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> GetRudders()
         {
             return Ok(await _rudderService.GetAll());
@@ -35,6 +37,7 @@ namespace AvtoAPI.Controllers
 
         [HttpPost]
         [Route(nameof(CreateRudder))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> CreateRudder([FromQuery] Rudder rudder)
         {
             return Ok(await _rudderService.Create(rudder));
@@ -42,6 +45,7 @@ namespace AvtoAPI.Controllers
 
         [HttpDelete]
         [Route(nameof(DeleteRudder))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task DeleteRudder([FromQuery] int id)
         {
             await _rudderService.DeleteRudder(id);
@@ -49,6 +53,7 @@ namespace AvtoAPI.Controllers
 
         [HttpPut]
         [Route(nameof(UpdateRudder))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task UpdateRudder([FromQuery] Rudder rudder)
         {
             Ok(await _rudderService.UpdateRudder(rudder));

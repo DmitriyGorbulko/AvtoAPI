@@ -23,6 +23,7 @@ namespace AvtoAPI.Controllers
 
         [HttpGet]
         [Route(nameof(GetBodyType))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> GetBodyType([FromQuery] int id)
         {
             return Ok(await _bodyTypeService.GetBodyTypeById(id));
@@ -30,6 +31,7 @@ namespace AvtoAPI.Controllers
 
         [HttpGet]
         [Route(nameof(GetBodyTypes))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> GetBodyTypes()
         {
             return Ok(await _bodyTypeService.GetAll());
@@ -37,6 +39,7 @@ namespace AvtoAPI.Controllers
 
         [HttpPost]
         [Route(nameof(CreateBodyType))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> CreateBodyType([FromQuery] BodyType bodyType)
         {
             return Ok(await _bodyTypeService.Create(bodyType));
@@ -44,6 +47,7 @@ namespace AvtoAPI.Controllers
 
         [HttpDelete]
         [Route(nameof(DeleteBodyType))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task DeleteBodyType([FromQuery] int id)
         {
             await _bodyTypeService.DeleteBodyType(id);
@@ -51,6 +55,7 @@ namespace AvtoAPI.Controllers
 
         [HttpPut]
         [Route(nameof(UpdateBodyType))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task UpdateBodyType([FromQuery] BodyType bodyType)
         {
             Ok(await _bodyTypeService.UpdateBodyType(bodyType));

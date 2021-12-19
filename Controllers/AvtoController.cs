@@ -22,6 +22,7 @@ namespace AvtoAPI.Controllers
 
         [HttpGet]
         [Route(nameof(GetAvto))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> GetAvto([FromQuery] int id)
         {
             return Ok(await _avtoService.GetAvtoById(id));
@@ -29,6 +30,7 @@ namespace AvtoAPI.Controllers
 
         [HttpGet]
         [Route(nameof(GetByNumberAvto))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> GetByNumberAvto([FromQuery] string numberAvto)
         {
             return Ok(await _avtoService.GetByNumberAvto(numberAvto));
@@ -36,6 +38,7 @@ namespace AvtoAPI.Controllers
 
         [HttpGet]
         [Route(nameof(GetAvtos))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> GetAvtos()
         {
             return Ok(await _avtoService.GetAll());
@@ -43,6 +46,7 @@ namespace AvtoAPI.Controllers
 
         [HttpPost]
         [Route(nameof(CreateAvto))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task<IActionResult> CreateAvto([FromQuery] Avto avto)
         {
             return Ok(await _avtoService.Create(avto));
@@ -50,6 +54,7 @@ namespace AvtoAPI.Controllers
 
         [HttpDelete]
         [Route(nameof(DeleteAvto))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task DeleteAvto([FromQuery] int id)
         {
             await _avtoService.DeleteAvto(id);
@@ -57,6 +62,7 @@ namespace AvtoAPI.Controllers
 
         [HttpPut]
         [Route(nameof(UpdateAvto))]
+        /*[Authorize(Role.Carowner)]*/
         public async Task UpdateAvto ([FromQuery] Avto avto)
         {
             Ok(await _avtoService.UpdateAvto(avto));

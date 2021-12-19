@@ -39,7 +39,7 @@ namespace AvtoAPI.Entities
         [ForeignKey(nameof(BodyType))]
         public int BodyTypeId { get; set; }
 
-        public BodyType BodyType { get; set; }
+        public virtual BodyType BodyType { get; set; }
 
         [Column("rudder_id")]
         [ForeignKey(nameof(Rudder))]
