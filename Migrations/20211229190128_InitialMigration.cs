@@ -2,7 +2,7 @@
 
 namespace AvtoAPI.Migrations
 {
-    public partial class InitMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +20,32 @@ namespace AvtoAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "brand",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_brand", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "color",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_color", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "rudder",
                 columns: table => new
                 {
@@ -33,16 +59,37 @@ namespace AvtoAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "brand_model",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BrandId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_brand_model", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_brand_model_brand_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "brand",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "avto",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    brand = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    model = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    number_avto = table.Column<int>(type: "int", nullable: false),
+                    vin = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    brand_model_id = table.Column<int>(type: "int", nullable: false),
                     year = table.Column<int>(type: "int", nullable: false),
                     power = table.Column<int>(type: "int", nullable: false),
-                    color = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    color_id = table.Column<int>(type: "int", nullable: false),
                     body_type_id = table.Column<int>(type: "int", nullable: false),
                     rudder_id = table.Column<int>(type: "int", nullable: false)
                 },
@@ -53,6 +100,18 @@ namespace AvtoAPI.Migrations
                         name: "FK_avto_body_type_body_type_id",
                         column: x => x.body_type_id,
                         principalTable: "body_type",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_avto_brand_model_brand_model_id",
+                        column: x => x.brand_model_id,
+                        principalTable: "brand_model",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_avto_color_color_id",
+                        column: x => x.color_id,
+                        principalTable: "color",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -83,33 +142,20 @@ namespace AvtoAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "person",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    numberlicense = table.Column<int>(type: "int", nullable: false),
-                    numberpasport = table.Column<int>(type: "int", nullable: false),
-                    AvtoId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_person", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_person_avto_AvtoId",
-                        column: x => x.AvtoId,
-                        principalTable: "avto",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_avto_body_type_id",
                 table: "avto",
                 column: "body_type_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_avto_brand_model_id",
+                table: "avto",
+                column: "brand_model_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_avto_color_id",
+                table: "avto",
+                column: "color_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_avto_rudder_id",
@@ -117,14 +163,14 @@ namespace AvtoAPI.Migrations
                 column: "rudder_id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_brand_model_BrandId",
+                table: "brand_model",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_car_owner_avto_id",
                 table: "car_owner",
                 column: "avto_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_person_AvtoId",
-                table: "person",
-                column: "AvtoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -133,16 +179,22 @@ namespace AvtoAPI.Migrations
                 name: "car_owner");
 
             migrationBuilder.DropTable(
-                name: "person");
-
-            migrationBuilder.DropTable(
                 name: "avto");
 
             migrationBuilder.DropTable(
                 name: "body_type");
 
             migrationBuilder.DropTable(
+                name: "brand_model");
+
+            migrationBuilder.DropTable(
+                name: "color");
+
+            migrationBuilder.DropTable(
                 name: "rudder");
+
+            migrationBuilder.DropTable(
+                name: "brand");
         }
     }
 }

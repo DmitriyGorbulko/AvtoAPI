@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 
 namespace AvtoAPI.Entities
 {
-    [Table("car_owner")]
-    public class CarOwner
+    [Table("brand_model")]
+    public class BrandModel
     {
         [Key]
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("person_id")]
-        public int PersonId { get; set; }
+        [Column("Name")]
+        public string Name { get; set; }
 
-        [Column("avto_id")]
-        [ForeignKey(nameof(Avto))]       
-        public int AvtoId { get; set; }
-        public virtual Avto Avto { get; set; }
+        [Column("BrandId")]
+        [ForeignKey(nameof(Brand))]
+        public int BrandId { get; set; }
+
+        public virtual Brand Brand { get; set; }
     }
 }
