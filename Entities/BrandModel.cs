@@ -15,10 +15,12 @@ namespace AvtoAPI.Entities
         public int Id { get; set; }
 
         [Column("Name")]
+        [Required]
         public string Name { get; set; }
 
         [Column("BrandId")]
         [ForeignKey(nameof(Brand))]
+        [Required]
         public int BrandId { get; set; }
 
         public virtual Brand Brand { get; set; }

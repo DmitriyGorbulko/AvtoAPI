@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AvtoAPI.Migrations
 {
     [DbContext(typeof(AvtoContext))]
-    [Migration("20211229190128_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20211229213529_initmigration")]
+    partial class initmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,8 +40,8 @@ namespace AvtoAPI.Migrations
                         .HasColumnType("int")
                         .HasColumnName("color_id");
 
-                    b.Property<int>("NumberAvto")
-                        .HasColumnType("int")
+                    b.Property<string>("NumberAvto")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("number_avto");
 
                     b.Property<int>("Power")

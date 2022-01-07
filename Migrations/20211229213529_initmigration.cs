@@ -2,7 +2,7 @@
 
 namespace AvtoAPI.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class initmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,7 +84,7 @@ namespace AvtoAPI.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    number_avto = table.Column<int>(type: "int", nullable: false),
+                    number_avto = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     vin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     brand_model_id = table.Column<int>(type: "int", nullable: false),
                     year = table.Column<int>(type: "int", nullable: false),

@@ -38,8 +38,8 @@ namespace AvtoAPI.Migrations
                         .HasColumnType("int")
                         .HasColumnName("color_id");
 
-                    b.Property<int>("NumberAvto")
-                        .HasColumnType("int")
+                    b.Property<string>("NumberAvto")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("number_avto");
 
                     b.Property<int>("Power")
